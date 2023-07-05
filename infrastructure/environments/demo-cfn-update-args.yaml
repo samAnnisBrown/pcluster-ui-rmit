@@ -1,0 +1,18 @@
+TemplateURL: BUCKET_URL_PLACEHOLDER/parallelcluster-ui.yaml
+Parameters:
+  - ParameterKey: Version
+    ParameterValue: 3.6.0
+  - ParameterKey: InfrastructureBucket
+    ParameterValue: BUCKET_URL_PLACEHOLDER
+  - ParameterKey: UserPoolId
+    UsePreviousValue: true
+  - ParameterKey: UserPoolAuthDomain
+    UsePreviousValue: true
+  - ParameterKey: SNSRole
+    UsePreviousValue: true
+  - ParameterKey: PublicEcrImageUri
+    ParameterValue: public.ecr.aws/pcm/parallelcluster-ui:latest
+Capabilities:
+  - CAPABILITY_AUTO_EXPAND
+  - CAPABILITY_NAMED_IAM
+DisableRollback: false

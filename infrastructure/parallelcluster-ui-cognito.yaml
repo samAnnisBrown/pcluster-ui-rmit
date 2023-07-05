@@ -1,0 +1,115 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: ParallelCluster UI Cognito User Pool
+
+Parameters:
+  AdminUserEmail:
+    Description: Email address of administrative user setup by default.
+    Type: String
+    MinLength: 1
+
+Conditions:
+  GovCloud: !Equals [!Ref AWS::Region, 'us-gov-west-1']
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Admin info
+        Parameters:
+          - AdminUserEmail
+    ParameterLabels:
+      AdminUserEmail:
+        default: Initial Admin's Email
+
+
+Resources:
+  SNSRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - cognito-idp.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: CognitoSNSPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: sns:publish
+                Resource: '*'
+
+
+  UserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      UserPoolId: !Ref CognitoUserPool
+      Domain: !Join [ "-", ["pcui-auth", !Select [2, !Split [ "/", !Ref 'AWS::StackId']]]]
+
+  CognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      AutoVerifiedAttributes:
+        - email
+      Schema: [{Name: email, AttributeDataType: String, Mutable: true, Required: true}]
+      UserPoolName: !Sub ${AWS::StackName}-userpool
+      UsernameConfiguration:
+        CaseSensitive: false
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: true
+        InviteMessageTemplate:
+          EmailSubject: "[AWS ParallelCluster UI] Welcome to AWS ParallelCluster UI, please verify your account."
+          EmailMessage: "You are invited to manage clusters with ParallelCluster UI. Your administrator will contact you with the link to access. Your username is {username} and your temporary password (you will need to change it in your first access) is <br><br> {####}"
+      UsernameAttributes:
+        - 'email'
+
+
+  CognitoAdminGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      Description: User group that can manage clusters and users
+      GroupName: admin
+      Precedence: 1
+      UserPoolId: !Ref CognitoUserPool
+
+  CognitoAdminUser:
+    Type: AWS::Cognito::UserPoolUser
+    Properties:
+      DesiredDeliveryMediums:
+        - EMAIL
+      UserAttributes:
+        - Name: email
+          Value: !Ref AdminUserEmail
+        - Name: email_verified
+          Value: True
+      Username: !Ref AdminUserEmail
+      UserPoolId: !Ref CognitoUserPool
+
+  CognitoUserToAdminGroup:
+    Type: AWS::Cognito::UserPoolUserToGroupAttachment
+    Properties:
+      GroupName: !Ref CognitoAdminGroup
+      Username: !Ref CognitoAdminUser
+      UserPoolId: !Ref CognitoUserPool
+
+Outputs:
+
+  UserPoolAuthDomain:
+    Description: The domain of the authorization server.
+    Value: !Sub
+      - https://${Domain}.${Auth}.${AWS::Region}.amazoncognito.com
+      - {Domain: !Ref UserPoolDomain, Auth: !If [GovCloud, 'auth-fips', 'auth']}
+
+  UserPoolId:
+    Description: Cognito UserPool Id
+    Value:  !Ref CognitoUserPool
+
+  SNSRole:
+    Description: Role for SNS
+    Value: !GetAtt SNSRole.Arn

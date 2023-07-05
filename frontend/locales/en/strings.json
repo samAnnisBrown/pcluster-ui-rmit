@@ -1,0 +1,1446 @@
+{
+  "global": {
+    "projectDisplayName": "AWS ParallelCluster",
+    "projectName": "AWS ParallelCluster UI",
+    "menu": {
+      "header": "$t(global.projectDisplayName)",
+      "clusters": "Clusters",
+      "images": "Images",
+      "users": "Users",
+      "viewLicense": "View license"
+    },
+    "topBar": {
+      "signOut": "Sign out",
+      "logoAltText": "$t(global.projectDisplayName} logo",
+      "regionSelector": {
+        "defaultRegionText": "Region",
+        "ariaLabel": "Region"
+      },
+      "overflowMenuTitleText": "All",
+      "overflowMenuTriggerText": "More"
+    },
+    "help": {
+      "configurationProperties": {
+        "title": "Configuration properties",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/cluster-configuration-file-v3.html?icmpid=docs_parallelcluster_hp_clusters_v1"
+      },
+      "ec2ConnectLink": {
+        "title": "EC2 Instance Connect",
+        "href": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-set-up.html?icmpid=docs_parallelcluster_hp_clusters_v1"
+      }
+    },
+    "openNewTab": "Open in a new tab",
+    "splitPanel": {
+      "preferencesTitle": "Split panel preferences",
+      "preferencesPositionLabel": "Split panel position",
+      "preferencesPositionDescription": "Choose the default split panel position for the service.",
+      "preferencesPositionSide": "Side",
+      "preferencesPositionBottom": "Bottom",
+      "preferencesConfirm": "Confirm",
+      "preferencesCancel": "Cancel",
+      "closeButtonAriaLabel": "Close panel",
+      "openButtonAriaLabel": "Open panel",
+      "resizeHandleAriaLabel": "Resize split panel"
+    },
+    "propertyFilter": {
+      "filteringAriaLabel": "your choice",
+      "dismissAriaLabel": "Dismiss",
+      "groupValuesText": "Values",
+      "groupPropertiesText": "Properties",
+      "operatorsText": "Operators",
+      "operationAndText": "and",
+      "operationOrText": "or",
+      "operatorLessText": "Less than",
+      "operatorLessOrEqualText": "Less than or equal",
+      "operatorGreaterText": "Greater than",
+      "operatorGreaterOrEqualText": "Greater than or equal",
+      "operatorContainsText": "Contains",
+      "operatorDoesNotContainText": "Does not contain",
+      "operatorEqualsText": "Equals",
+      "operatorDoesNotEqualText": "Does not equal",
+      "editTokenHeader": "Edit filter",
+      "propertyText": "Property",
+      "operatorText": "Operator",
+      "valueText": "Value",
+      "cancelActionText": "Cancel",
+      "applyActionText": "Apply",
+      "allPropertiesLabel": "All properties",
+      "clearFiltersText": "Clear filters",
+      "removeTokenButtonAriaLabel": "Remove token {{propertyKey}} {{operator}} {{value}}",
+      "enteredTextLabel": "Use: '{{text}}'"
+    },
+    "loading": "Loading...",
+    "intlCurrency": "{{value, currency(USD)}}"
+  },
+  "errorBoundary": {
+    "modal": {
+      "closeAriaLabel": "Close",
+      "header": "Something went wrong",
+      "description": "The application has encountered an unknown error and it is now in an inconsistent state. If you think that this is an error on our side, please help us improve by sending an error report on our <1>GitHub issues page</1>. Close this dialog to go back to the home page.",
+      "button": "Go to Homepage"   
+    }
+  },
+  "noMatch": {
+    "imageAlt": "Page not found",
+    "title": "Page not found",
+    "description": "You might have typed the address incorrectly or you might have used an outdated link. Check the link and try again.",
+    "links": "Use the following links:",
+    "home": "Homepage"
+  },
+  "helpPanel": {
+    "footer": {
+      "learnMore": "Learn more"
+    },
+    "default": {
+      "title": "$t(global.projectName)",
+      "description": "Create an HPC cluster in AWS using $t(global.projectName). This UI uses the AWS ParallelCluster API to create, edit, and delete clusters, as well as to access and view logs, and build Amazon Machine Images (AMI's)."
+    }
+  },
+  "infoLink": {
+    "label": "Info",
+    "ariaLabel": "Info"
+  },
+  "cluster": {
+    "editAlert": "This cluster cannot be edited as it was created using a different version of AWS ParallelCluster.",
+    "tabs": {
+      "details": "Details",
+      "instances": "Instances",
+      "storage": "Storage",
+      "scheduling": "Job status",
+      "accounting": "Accounting",
+      "stackEvents": "Stack events",
+      "costMonitoring": "Cost monitoring"
+    },
+    "properties": {
+      "title": "Properties",
+      "sshcommand": {
+        "label": "SSH command",
+        "success": "SSH command copied",
+        "help": "Copy the SSH command.",
+        "tooltiptext": "Copy the command to SSH into the head node. If the key pair you use to create the head node isn't the default, you must specify the path to the key pair. See <0>Connect to your Linux instance using an SSH Client</0> for more information."
+      },
+      "configurationLabel": "Cluster configuration",
+      "configurationLink": "View YAML",
+      "statusLabel": "Cluster status",
+      "computeFleetStatusLabel": "Compute fleet status",
+      "creationTimeLabel": "Created time",
+      "lastUpdatedTimeLabel": "Latest update time",
+      "regionLabel": "Region",
+      "versionLabel": "Version",
+      "ec2InstanceConnect": {
+        "label": "EC2 Instance Connect",
+        "help": "Locally install mSSH helper and copy the provided command to connect to the head node with EC2 Instance Connect.",
+        "copySuccess": "mSSH command copied",
+        "copyAria": "Copy the mSSH command."
+      },
+      "configDialog": {
+        "title": "Cluster configuration",
+        "download": "Download",
+        "close": "Close"
+      }
+    },
+    "instances": {
+      "title": "Instances",
+      "id": "ID",
+      "instance": "Instance",
+      "launchedTime": "Launched time",
+      "type": "Type",
+      "privateIp": "Private IP",
+      "publicIp": "Public IP",
+      "state": "State",
+      "actionsLabel": "Actions",
+      "actions": {
+        "stop": "Stop",
+        "start": "Start"
+      },
+      "loadingText": "Loading instances...",
+      "filtering": {
+        "filteringPlaceholder": "Find instances",
+        "filteringAriaLabel": "Find instances",
+        "empty": {
+          "title": "No instances",
+          "subtitle": "No instances found"
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No instances match the filters."
+        },
+        "clearFilter": "Clear filter"
+      }
+    },
+    "storage": {
+      "tableTitle":"File systems",
+      "id": "ID",
+      "mountPath": "Mount path",
+      "name": "Name",
+      "type": "Type",
+      "noFilesystems": "No file systems to display",
+      "noFilesystemsFound": "No file systems found.",
+      "noFilesystemsToDisplay": "Edit the cluster to add file systems.",
+      "filter": {
+        "loading": "Loading file systems...",
+        "filteringPlaceholder": "Find file systems",
+        "filteringAriaLabel": "Find file systems",
+        "noMatches": "No matches",
+        "noFilesystems": "No file systems match the filters.",
+        "clear": "Clear filter"
+      }
+    },
+    "stackEvents": {
+      "title": "Events",
+      "filter": {
+        "filteringPlaceholder": "Find stack events",
+        "filteringAriaLabel": "Find stack events"
+      },
+      "actions": {
+        "refresh": "Refresh",
+        "view": "View in CloudFormation"
+      }
+    },
+    "accounting": {
+      "id": "ID",
+      "name": "Name",
+      "queue": "Queue",
+      "user": "User",
+      "state": "State",
+      "loadingJobs": "Loading jobs...",
+      "filterJobs": "Filter jobs",
+      "costEstimate": {
+        "title": "Cost estimate",
+        "help": "This cost estimate is based on the time taken for the job to run, the number of nodes, and an estimate of the node cost. The estimate could be inaccurate and is only meant to be an overall estimate."
+      },
+      "filter": {
+        "empty": {
+          "title": "No jobs to display",
+          "subtitle": "From the cluster head node, submit a job and monitor its status."
+        }
+      }
+    },
+    "scheduling": {
+      "tableTitle": "Jobs",
+      "id": "ID",
+      "name": "Name",
+      "partition": "Partition",
+      "runTime": "Run time",
+      "nodes": "Nodes",
+      "actions": "Actions",
+      "queue": "Queue",
+      "state": "State",
+      "schedulingEnabled": "Scheduling is only available in clusters with version 3.1.x and greater.",
+      "ssmEnabled": "You must enable SSM to monitor jobs.",
+      "filter": {
+        "filteringAriaLabel": "Find jobs",
+        "filteringPlaceholder": "Find jobs",
+        "empty": {
+          "title": "No jobs to display",
+          "subtitle": "From the cluster head node, submit a job and monitor its status."
+        }
+      },
+      "loadingJobs": "Loading jobs...",
+      "propertyNotAvailable": "N/A"
+    },
+    "logs": {
+      "label": "Select a log stream from the left."
+    },
+    "help": {
+      "main": "<p>Create a new cluster or select a listed cluster to view detailed information.</p><p>Choose <strong>Create cluster</strong> to create and configure a cluster. Choose <strong>Step by step</strong> to create a cluster by using the widget only. Choose <strong>With a template</strong> if you want to choose a template to populate the wizard before you start. Choose <strong>With an existing cluster</strong> if you want to choose and existing cluster to populate the wizard before you start.</p><p>Choose <strong>Actions</strong>, <strong>Edit cluster</strong> to update the cluster configuration. Some configuration updates require that you first stop the compute fleet, and some updates can't be performed.</p><p>You can toggle <strong>Stop fleet</strong> | <strong>Start fleet</strong> to stop or start the cluster compute fleet. Choose <strong>Actions</strong> to <strong>Delete cluster</strong>.</p><p>You can only <strong>Create</strong> and <strong>Edit</strong> clusters with the same AWS ParallelCluster version that was used to create the AWS ParallelCluster UI.</p><p>Depending on the cluster configuration, you can use an AWS Systems Manager shell session or a DCV virtual desktop to access the head node of the selected cluster. From <strong>Actions</strong>, choose <strong>View file system</strong> to navigate to the cluster file system in the AWS management console, or choose <strong>View logs</strong> to view AWS ParallelCluster logs.</p><p>Enter text in the search field to find clusters by name, status, or version. Select a listed cluster to view its details.</p><0></0>",
+      "details": "<strong>Details</strong> shows a summary of cluster properties. To connect to the head node instance, use the link provided by the <strong>EC2 Instance Connect</strong> helper.",
+      "instances": "<strong>Instances</strong> shows the list of cluster EC2 instances.",
+      "storage": "<strong>Storage</strong> shows the list of your configured file systems.",
+      "scheduling": "<strong>Job scheduling</strong> shows running jobs.",
+      "accounting": "<strong>Accounting</strong> shows a dashboard for your configured Slurm accounting data.",
+      "events": "<strong>Stack events</strong> shows the record of cluster CloudFormation stack create, update, and delete events.",
+      "dcvLink": {
+        "title": "NICE DCV",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/dcv-v3.html?icmpid=docs_parallelcluster_hp_clusters_v1"
+      },
+      "accountingLink": {
+        "title": "Slurm accounting with AWS ParallelCluster",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/slurm-accounting-v3.html?icmpid=docs_parallelcluster_hp_headnode_accounting_v1"
+      },
+      "logsLink": {
+        "title": "AWS ParallelCluster logs",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/cloudwatch-logs-v3.html?icmpid=docs_parallelcluster_hp_clusters_v1"
+      }
+    },
+    "list": {
+      "header": {
+        "title": "Clusters",
+        "description": "The list of your clusters."
+      },
+      "dialogs": {
+        "delete": {
+          "title": "Delete cluster",
+          "body": "Are you sure you want to delete cluster {{clusterName}}?"
+        },
+        "stop": {
+          "title": "Stop compute fleet",
+          "body": "Are you sure you want to stop compute fleet of cluster {{clusterName}}? This will terminate all jobs that are running and terminate any compute nodes running."
+        }
+      },
+      "actions": {
+        "cancel": "Cancel",
+        "create": "Create cluster",
+        "edit": "Edit cluster",
+        "createFromWizard": "Step by step",
+        "createFromTemplate": "With a template",
+        "createFromCluster": "With an existing cluster",
+        "start": "Start fleet",
+        "stop": "Stop fleet",
+        "delete": "Delete cluster",
+        "shell": "Shell",
+        "filesystem": "View file system",
+        "dcv": "DCV",
+        "logs": "View logs"
+      },
+      "actionsLabel": "Actions",
+      "filtering": {
+        "empty": {
+          "title": "No clusters to display",
+          "subtitle": "Click on Create cluster to create a cluster.",
+          "action": "Create cluster"
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No clusters match the filters",
+          "action": "Create filter"
+        }
+      },
+      "cols": {
+        "name": "Name",
+        "status": "Status",
+        "version": "Version"
+      },
+      "loadingText": "Loading clusters...",
+      "countText": "Results:",
+      "filteringAriaLabel": "Filter cluster",
+      "filteringPlaceholder": "Find clusters",
+      "splitPanel": {
+        "noClusterSelectedText": "No cluster selected",
+        "selectClusterText": "Select a cluster to see its details"
+      }
+    },
+    "codeEditor": {
+      "line": "Line",
+      "column": "Column",
+      "loading": "Loading code editor",
+      "loadingError": "There was an error loading the code editor.",
+      "errorStateRecovery": "Retry",
+      "editorGroupAriaLabel": "Code editor",
+      "statusBarGroupAriaLabel": "Status bar",
+      "errorsTab": "Errors",
+      "warningsTab": "Warnings",
+      "preferencesButtonAriaLabel": "Preferences",
+      "paneCloseButtonAriaLabel": "Close",
+      "preferencesModalHeader": "Preferences",
+      "preferencesModalCancel": "Cancel",
+      "preferencesModalConfirm": "Confirm",
+      "preferencesModalWrapLines": "Wrap lines",
+      "preferencesModalTheme": "Theme",
+      "preferencesModalLightThemes": "Light themes",
+      "preferencesModalDarkThemes": "Dark themes"
+    },
+    "fromClusterModal": {
+      "title": "Start with an existing cluster",
+      "description": "Choose an existing cluster to populate the wizard before you start. You can only <strong>Create</strong> clusters with the same AWS ParallelCluster version that was used to create the AWS ParallelCluster UI.",
+      "actions": {
+        "cancel": "Cancel",
+        "create": "Create"
+      },
+      "clusterSelect": {
+        "placeholder": "Select a cluster",
+        "selectedAriaLabel": "Selected",
+        "empty": "No cluster available"
+      },
+      "closeAriaLabel": "Close"
+    }
+  },
+  "clusterLogs": {
+    "title": "Cluster {{clusterName}} logs",
+    "breadcrumbLabel": "Logs",
+    "helpPanel": {
+      "title": "$t(clusterLogs.title)",
+      "description": "<p>View the AWS ParallelCluster logs that Amazon CloudWatch collects for your cluster.</p><p>You can also view these logs in the Amazon CloudWatch console and dashboard.</p>",
+      "cwIntegrationLink": {
+        "title": "Integration with Amazon CloudWatch Logs",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/cloudwatch-logs-v3.html"
+      },
+      "cwDashboardLink": {
+        "title": "Amazon CloudWatch dashboard",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/cloudwatch-dashboard-v3.html"
+      },
+      "monitoringLink": {
+        "title": "Monitoring section",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/Monitoring-v3.html"
+      }
+    },
+    "logStreams": {
+      "title": "Log streams",
+      "columns": {
+        "hostname": "Hostname",
+        "nodeType": "Type",
+        "logIdentifier": "Log identifier",
+        "timestamp": "Last event time"
+      },
+      "nodeType": {
+        "headNode": "Headnode",
+        "computeNode": "Compute node",
+        "empty": "-"
+      },
+      "loadingText": "Loading log streams...",
+      "filtering": {
+        "countText": "Results: {{filteredItemsCount}}",
+        "filteringPlaceholder": "Filter log streams",
+        "empty": {
+          "title": "No log streams",
+          "subtitle": "No log streams to display."
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No log stream matches the filters.",
+          "resetFilter": "Clear filter"
+        }
+      },
+      "actions": {
+        "refresh": "Refresh"
+      }
+    },
+    "logEvents": {
+      "title": "Messages",
+      "columns": {
+        "message": "Message",
+        "timestamp": "Event time"
+      },
+      "loadingText": "Loading messages...",
+      "filtering": {
+        "countText": "Results: {{filteredItemsCount}}",
+        "filteringPlaceholder": "Find messages",
+        "empty": {
+          "title": "No messages to display",
+          "subtitle": "Select a log stream to browse the messages."
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No message matches the filters.",
+          "resetFilter": "Clear filter"
+        }
+      },
+      "actions": {
+        "refresh": "Refresh"
+      }
+    }
+  },
+  "costMonitoring": {
+    "activateButton": {
+      "label": "Activate cost monitoring",
+      "activationSuccess": "Cost monitoring activation might take up to 24 hours to complete. We are processing your request."
+    },
+    "enableCostExplorerModal": {
+      "title": "Activating Cost Explorer",
+      "description": "To use cost monitoring in the PCUI, open Cost Explorer in your account:<p>1. Log in to the AWS Management console and navigate to AWS Cost Management.<br/>2. In the navigation pane, choose Cost Explorer.<br/>3. In the Welcome page, choose Launch Cost Explorer.</p>",
+      "closeAriaLabel": "Close",
+      "actions": {
+        "cancel": "Not now",
+        "goToCostExplorer": "Activate Cost Explorer"
+      }
+    },
+    "costData": {
+      "title": "Spending analysis",
+      "viewInCostExplorer": "View in Cost Explorer",
+      "viewBudgets": "View Budgets and Alarms",
+      "chart": {
+        "yTitle": "Spent ($)",
+        "xTitle": "Months",
+        "loadingText": "Loading spending data...",
+        "errorText": "Could not load spending data.",
+        "recoveryText": "Retry",
+        "empty": {
+          "title": "No spending data",
+          "subtitle": "No spending data to display. It might take 24 hours for data to be available."
+        },
+        "months": {
+          "jan": "January",
+          "feb": "February",
+          "mar": "March",
+          "apr": "April",
+          "may": "May",
+          "jun": "June",
+          "jul": "July",
+          "aug": "August",
+          "sep": "September",
+          "oct": "October",
+          "nov": "November",
+          "dec": "December"
+        }
+      }
+    }
+  },
+  "wizard": {
+    "actions": {
+      "refreshConfig": "Refresh",
+      "stopComputeFleet": "Stop fleet",
+      "cancel": "Cancel",
+      "remove": "Remove",
+      "back": "Back",
+      "next": "Next",
+      "update": "Edit cluster",
+      "create": "Create",
+      "dryRun": "Dry run"
+    },
+    "navigation": {
+      "optional": "optional",
+      "stepNumberLabel": "Step {{stepNumber}}",
+      "collapsedStepsLabel": "Step {{stepNumber}} of {{stepsCount}}",
+      "steps": "Steps"
+    },
+    "cluster": {
+      "title": "Cluster",
+      "description": "Configure the settings that apply to all cluster resources.",
+      "clusterProperties": {
+        "title": "Cluster properties"
+      },
+      "help": {
+        "main": "<p>Configure your cluster environment by selecting the AWS Region, operating system, and VPC.</p><p>Choose <strong>Multiple users on a cluster</strong> to use your Active Directory for managing multiple cluster users.</p><p>Choose <strong>Custom Amazon Machine Image (AMI)</strong> to use your custom AWS ParallelCluster image.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>",
+        "networkLink": {
+          "title": "Network configurations",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/network-configuration-v3.html?icmpid=docs_parallelcluster_hp_cluster_v1"
+        },
+        "adLink": {
+          "title": "Multiple user access to clusters",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/multi-user-v3.html?icmpid=docs_parallelcluster_hp_cluster_v1"
+        },
+        "amiLink": {
+          "title": "AWS ParallelCluster AMI customization",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/custom-ami-v3.html?icmpid=docs_parallelcluster_hp_cluster_v1"
+        }
+      },
+      "validation": {
+        "VpcSelect": "You must select a VPC.",
+        "regionSelect": "You must select a region.",
+        "customAmiSelect": "You must select an AMI ID if you add a custom AMI."
+      },
+      "clusterName": {
+        "label": "Name",
+        "description": "The name must start with an alphabetical character and can have up to 60 characters. If Slurm accounting is configured, the name can have up to 40 characters. Valid characters: A-Z, a-z, 0-9, and - (hyphen).",
+        "placeholder": "Enter your cluster name",
+        "cannotBeBlank": "Cluster name must not be blank.",
+        "alreadyExists": "Cluster with name {{clusterName}} already exists. Choose a unique name.",
+        "doesntMatchRegex": "Cluster name '{{clusterName}}' doesn't match the the required format. Enter a name that starts with an alphabetical character and has up to 60 characters. If Slurm accounting is configured, the name can have up to 40 characters. Valid characters: A-Z, a-z, 0-9, and - (hyphen)"
+      },
+      "region": {
+        "label": "Region",
+        "description": "The AWS Region for the cluster.",
+        "selectedAriaLabel": "Selected",
+        "placeholder": "Select a region"
+      },
+      "os": {
+        "label": "Operating system",
+        "description": "The operating system installed on the cluster nodes.",
+        "selectedAriaLabel": "Selected"
+      },
+      "vpc": {
+        "label": "VPC",
+        "description": "The VPC for the cluster instances.",
+        "selectedAriaLabel": "Selected"
+      },
+      "imdsSupport": {
+        "label": "IMDS settings",
+        "description": "The IMDS version that cluster nodes use.",
+        "placeholder": "Select an IMDS version",
+        "values": {
+          "version10": "Version 1.0",
+          "version20": "Version 2.0"
+        }
+      },
+      "multiUser": {
+        "title": "Multiple user management properties",
+        "description": "Configure Active Directory access settings for multiple users on a cluster.",
+        "help": "<p>Configure access to your Active Directory by using LDAP.</p><p>Use your existing Active Directory or create one by using the quick create method described in the <0>$t(wizard.cluster.multiUser.adLink.title)</0>.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>",
+        "multiUserAccessLink": {
+          "title": "Multiple user access to clusters",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/multi-user-v3.html?icmpid=docs_parallelcluster_hp_multi_user_v1"
+        },
+        "adLink": {
+          "title": "Tutorial: Integrating Active Directory",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/tutorials_05_multi-user-ad.html?icmpid=docs_parallelcluster_hp_multi_user_v1"
+        },
+        "directoryServiceLink": {
+          "title": "Directory Service configuration",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/DirectoryService-v3.html?icmpid=docs_parallelcluster_hp_multi_user_v1"
+        },
+        "checkbox": {
+          "label": "Manage multiple users on a cluster"
+        },
+        "domainName": {
+          "name": "Domain name",
+          "description": "The Active Directory (AD) domain that you use for identity information.",
+          "help": "The Domain name corresponds to the SSSD-LDAP parameter that's called ldap_search_base."
+        },
+        "domainAddress": {
+          "name": "Domain address",
+          "description": "The URI or URIs that point to the Active Directory domain controller that's used as the LDAP server.",
+          "help": "The URI corresponds to the SSSD-LDAP parameter that's called ldap_uri. The value can be a comma separated string of URIs. To use LDAP, you must add ldap:// to the beginning of the each URI."
+        },
+        "passwordSecretArn" : {
+          "name": "Password secret Amazon Resource Name (ARN)",
+          "description": "The ARN of the AWS Secrets Manager secret that contains the Domain Read Only User plaintext password.",
+          "help": "The content of the secret corresponds to the SSSD-LDAP parameter that's called ldap_default_authtok."
+        },
+        "domainReadOnlyUser": {
+          "name": "Domain Read Only User",
+          "description": "The identity that's used to query the Active Directory domain for identity information when authenticating cluster user logins.",
+          "help": "The Domain Read Only User corresponds to SSSD-LDAP parameter that's called ldap_default_bind_dn. Use your Active Directory identity information for this value."
+        },
+       "caCertificate": {
+         "name": "CA certificate",
+         "description": "The absolute path to a certificates bundle containing the certificates for every CA in the certification chain that issued a certificate for the domain controllers.",
+         "help": "The CA certificate corresponds to the SSSD-LDAP parameter that's called ldap_tls_cacert."
+       },
+        "requireCertificate": {
+          "name": "Require certificate",
+          "description": "Specifies the checks to perform on server certificates in a TLS session.",
+          "help": "Require certificate corresponds to SSSD-LDAP parameter that's called ldap_tls_reqcert."
+        },
+        "LDAPAccessFilter": {
+          "name": "LDAP access filter",
+          "description": "Specifies a filter to limit LDAP queries to a subset of the directory that's being queried.",
+          "help": "LDAP access filter corresponds to the SSSD-LDAP parameter that's called ldap_access_filter. You can use it to limit queries to an Active Directory that supports a large number of users."
+        },
+        "generateSSHKeys": {
+          "name": "Generate SSH keys",
+          "help": "<p>Defines whether AWS ParallelCluster generates SSH key pairs for cluster users after they log in to the head node for the first time.</p><p>The key pair is saved to the user home directory at /home/username/.ssh/.</p><p>Users can use the SSH key pair for subsequent logins to the cluster head node and compute nodes.</p><p>With AWS ParallelCluster, logins to cluster compute nodes are disabled by design. If a user hasn't logged into the head node, SSH keys aren't generated and the user won't be able to log in to compute nodes.</p>"
+        },
+        "advancedOptionsLabel": "Advanced options",
+        "sssdParameters": {
+          "name": "Additional SSSD Options",
+          "description": "Key-value pairs containing arbitrary SSSD parameters and values to write to the SSSD config file on cluster instances.",
+          "validation": "You must specify a value for both the key and value.",
+          "addButton": "Add",
+          "removeButton": "Remove"
+        }
+      }
+    },
+    "headNode": {
+      "title": "Head node",
+      "description": "Configure the cluster head node.",
+      "instance": {
+        "title": "Head node instance"
+      },
+      "help": {
+        "main": "<p>Configure the head node of your cluster. The head node serves as the management node for cluster operations. You use the head node to access and manage the cluster and manage users. Cluster users access the head node to submit jobs.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>",
+        "instanceSelectionLink": {
+          "title": "Head node instance type selection",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/best-practices-v3.html?icmpid=docs_parallelcluster_hp_headnode_v1#best-practices-head-node-instance-type"
+        },
+        "headNodePropertiesLink": {
+          "title": "Head node properties",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/HeadNode-v3.html?icmpid=docs_parallelcluster_hp_headnode_v1"
+        },
+        "ssmLink": {
+          "title": "What is an SSM session?",
+          "href": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session?icmpid=docs_parallelcluster_hp_headnode_v1"
+        },
+        "dcvLink": {
+          "title": "What is NICE DCV virtual desktop?",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/dcv-v3.html?icmpid=docs_parallelcluster_hp_headnode_v1"
+        },
+        "customActionsLink": {
+          "title": "What are custom actions?",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/custom-bootstrap-actions-v3.html?icmpid=docs_parallelcluster_hp_headnode_v1"
+        },
+        "slurmSettings": "<p>Configure Slurm accounting settings for your cluster.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>",
+        "accountingLink": {
+          "title": "How Slurm accounting works with AWS ParallelCluster",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/slurm-accounting-v3.html?icmpid=docs_parallelcluster_hp_headnode_accounting_v1"
+        },
+        "databaseLink": {
+          "title": "Slurm accounting database setting",
+          "href": "https://alpha.www.docs.aws.a2z.com/parallelcluster/latest/ug/Scheduling-v3.html#Scheduling-v3-SlurmSettings-Database"
+        }
+      },
+      "validation": {
+        "selectSubnet": "You must select a subnet.",
+        "selectInstanceType": "You must select an instance type.",
+        "setRootVolumeSize": "You must set a root volume size.",
+        "rootVolumeMinimum": "You must use an integer >= 35GB for root volume size.",
+        "scriptWithArgs": "You must specify a script path if you specify args."
+      },
+      "Dcv": {
+        "label": "Virtual desktop",
+        "add": "Add DCV",
+        "help": "Use the DCV virtual desktop to access the head node and visualize results. Increase your instance size if you add this option."
+      },
+      "Ssm": {
+        "title":"SSM session",
+        "label": "Add SSM session",
+        "help": "You can access the head node by opening an SSM session when you choose the cluster from the list of clusters and select <strong>Shell</strong>. The required IAM policy is automatically added to the Additional IAM policies setting."
+      },
+      "instanceType": {
+        "label": "Instance type"
+      },
+      "keypair": {
+        "label": "Key pair",
+        "description": "Choose a key pair to connect to the head node by using SSH."
+      },
+      "imdsSecured": {
+        "label": "IMDS",
+        "set": "Set IMDS secured",
+        "help": "IMDS secured restricts access to IMDS (and thus instance credentials) to users with superuser permissions.",
+        "imdsv2Link": {
+          "title": "How instance metadata service version 2 works",
+          "href": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-v2-how-it-works"
+        }
+      },
+      "networking": {
+        "header": "Networking",
+        "subnetId": {
+          "label": "Subnet ID",
+          "description": "Subnet ID for the head node."
+        }
+      },
+      "security": {
+        "header": "Security configuration and permissions"
+      },
+      "securityGroups": {
+       "label": "Additional security groups",
+       "select": "Select one or more security groups"
+      },
+      "localStorage": {
+        "title": "Local storage"
+      },
+      "advancedOptions": {
+        "label": "Advanced options",
+        "scripts": {
+          "title": "Scripts",
+          "onStart": {
+            "label": "Run script on node start"
+          },
+          "onConfigured": {
+            "label": "Run script on node configured"
+          },
+          "onUpdated": {
+            "label": "Run script on node updated"
+          }
+        },
+        "iamPolicies": {
+          "label": "IAM Policies"
+        }
+      },
+      "slurmSettings": {
+        "validation": {
+          "databaseCannotBeEmpty": "Database can't be empty",
+          "usernameCannotBeEmpty": "Username can't be empty",
+          "passwordCannotBeEmpty": "Password secret ARN can't be empty",
+          "scaledownIdleTimeLessThanOne": "Scale down idle time is at least 1 minute"
+        },
+        "container": {
+          "title": "Slurm settings",
+          "description": "Connect with an external Slurm database to monitor and analyze cluster usage."
+        },
+        "database": {
+          "label": "Database",
+          "description": "The path to the Slurm database.",
+          "placeholder": "DNSName/ip:port"
+        },
+        "username": {
+          "label": "Username",
+          "placeholder": "Username",
+          "description": "The user ID for access to the database."
+        },
+        "password": {
+          "label": "Password secret ARN",
+          "placeholder": "arn::aws::...",
+          "description": "The ARN of the AWS secret containing the database password."
+        },
+        "scaledownIdleTime": {
+          "label": "Scale down idle time (in minutes)",
+          "description": "The amount of time that a queue has no jobs before the Slurm node terminates.",
+          "placeholder": "10"
+        },
+        "queueUpdateStrategy": {
+          "label": "Queue update strategy",
+          "description": "Specifies the node replacement strategy for a queue.",
+          "placeholder": "Select a queue update strategy",
+          "selectedAriaLabel": "Selected",
+          "options": {
+            "computeFleetStop": "Compute Fleet Stop",
+            "drain": "Drain",
+            "terminate": "Terminate"
+          }
+        }
+      }
+    },
+    "storage": {
+      "title": "Storage",
+      "description": "Add and configure shared storage for your cluster. Shared storage is shared between the head node and compute nodes.",
+      "container": {
+        "title": "Storage settings",
+        "description": "Add up to <0>20 file systems</0> for shared storage.",
+        "noStorageSelected": "No shared storage options selected.",
+        "storageTypes": "Storage types",
+        "storageTypesPlaceholder": "Select file system types",
+        "volumePlaceholder": "Select a volume",
+        "addStorage": "Add storage",
+        "removeStorage": "Remove storage",
+        "sourceTitle": "Source {{index}} - {{name}}"
+      },
+      "helpPanel": {
+        "title": "$t(wizard.storage.title)",
+        "description": "<p>Add and configure shared storage for your cluster. Shared storage is shared between the head node and compute nodes.</p><p>Choose <strong>Add storage</strong> to configure shared storage for your cluster.</p><p>When you <strong>Edit</strong> shared storage configuration settings, AWS ParallelCluster doesn't check your inputs as you enter them. If your inputs can cause errors, AWS ParallelCluster returns validation error messages when you create the cluster or submit a dry run.</p><p>To see what settings can't be edited, search on the text \"Update policy: If this setting is changed, the update is not allowed\" in the <strong>Shared Storage section</strong> of the AWS ParallelCluster configuration documentation.</p><p>You can configure external or AWS ParallelCluster managed shared storage.</p>",
+        "section": {
+          "external": {
+            "title": "<strong>External storage</strong>",
+            "description": "<p>External storage refers to an existing volume or file system that you manage. AWS ParallelCluster doesn't create or delete external storage. You can configure AWS ParallelCluster to attach external storage to the cluster when the cluster is created or updated. Similarly, you can configure AWS ParallelCluster to detach external storage from the cluster when the cluster is deleted or edited. We recommend that you use external storage for long-term, permanent shared storage outside of the cluster lifecycle.</p>"
+          },
+          "managed": {
+            "title": "<strong>AWS ParallelCluster managed storage</strong>",
+            "description": "<p>Managed storage refers to a volume or file system that AWS ParallelCluster creates and can delete. By default, AWS ParallelCluster managed storage is configured to depend on the lifecycle of the cluster. By default, an AWS ParallelCluster managed file system or volume and its data are deleted if you do one of the following things:</p><0></0><p>For EBS storage you can edit the <strong>Deletion Policy</strong> and change it from the default <strong>Delete</strong> to <strong>Retain</strong>. Then, if you delete the cluster, the EBS volume persists and can be used as external storage for another cluster. <strong>Deletion policy</strong> is set to <strong>Delete</strong> for all other managed shared storage types.</p>",
+            "list": {
+              "delete": "<strong>Delete</strong> the cluster",
+              "remove": "<strong>Remove</strong> the managed shared storage",
+              "edit": "<strong>Edit</strong> the configuration YAML to change the managed shared name."
+            }
+          },
+          "recommendation": {
+            "description": "<p>We recommend that you regularly back up your data to avoid any data loss.</p><p>Learn more about shared storage properties, types, and quotas in <strong>Learn more</strong>.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>"
+          }
+        },
+        "link": {
+          "sharedStorage": {
+            "title": "Shared storage",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/shared-storage-quotas-integration-v3.html?icmpid=docs_parallelcluster_hp_shared_storage_v1"
+          },
+          "sharedStorageSection": {
+            "title": "Shared storage section",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html?icmpid=docs_parallelcluster_hp_shared_storage_v1"
+          }
+        }
+      },
+      "Fsx": {
+        "existing": {
+          "fsxLustre": "FSx Lustre Filesystem",
+          "fsxOpenZfs": "FSx OpenZFS volume",
+          "fsxOnTap": "FSx NetApp ONTAP volume"
+        },
+        "capacity": {
+          "label": "Storage capacity (GB)",
+          "placeholder": "1200"
+        },
+        "lustreType": {
+          "label": "FSx for Lustre",
+          "help": "<p>Choose <code>SCRATCH_1</code> and <code>SCRATCH_2</code> deployment types when you need temporary storage and shorter-term processing of data.</p><p>The <code>SCRATCH_2</code> deployment type provides in-transit encryption of data and higher burst throughput capacity than <code>SCRATCH_1</code>.</p><p>Choose the <code>PERSISTENT_2</code> deployment type for longer-term storage and workloads and encryption of data in transit.</p><p>Choose <code>PERSISTENT_1</code> only for backwards compatibility.</p>",
+          "link": {
+            "title": "DeploymentType settings",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-FsxLustreSettings-DeploymentType"
+          }
+        },
+        "import": {
+          "label": "Import path",
+          "placeholder": "s3://yourbucket",
+          "help": "Set Import path to read files into your file system from an S3 bucket. See <0>ImportPath</0>."
+        },
+        "export": {
+          "label": "Export path",
+          "placeholder": "s3://yourbucket",
+          "help": "Set Export path to write files from your file system into an S3 bucket. See <0>ExportPath</0>."
+        },
+        "throughput": {
+          "label": "Per unit storage throughput (MB/s/TiB)",
+          "help": "Configure the amount of read and write throughput for each 1 tebibyte of storage, in MB/s/TiB.",
+          "link": {
+            "title": "PerUnitStorageThroughput",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-FsxLustreSettings-PerUnitStorageThroughput"
+          }
+        },
+        "compression": {
+          "label": "Compress file system data",
+          "help": "When data compression is used, Amazon FSx for Lustre automatically compresses newly written files before they are written to disk and automatically uncompresses them when they are read.",
+          "link": {
+            "title": "DataCompressionType setting",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-FsxLustreSettings-DataCompressionType"
+          }
+        }
+      },
+      "Efs": {
+        "existing": "EFS filesystem",
+        "encrypted": {
+          "label": "Encrypted",
+          "help": "A custom AWS KMS key is used for encryption.",
+          "encryptionLink": {
+            "title": "EFS encryption",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EfsSettings-Encrypted"
+          },
+          "kmsId": "KMS ID"
+        },
+        "performanceMode": {
+          "label": "Performance mode:"
+        },
+        "provisioned": {
+          "label": "Provisioned throughput (1-1024 in MiB/s)",
+          "placeholder": "128",
+          "help": "Configure the provisioned throughput (from 1-1024 in MiB/s) for the Amazon EFS file system. If not configured, the file system is created in bursting mode.",
+          "throughputLink": {
+            "title": "ThroughputMode section",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EfsSettings-ThroughputMode"
+          }
+        },
+        "validation": {
+          "provisionedThroughput": "You must specify a valid provisioned throughput value."
+        }
+      },
+      "Ebs": {
+        "existing": "EBS ID",
+        "volumeType": {
+          "label": "Volume type",
+          "placeholder": "Default ({{defaultVolumeType}})"
+        },
+        "volumeSize": {
+          "label": "Volume Size (35-2048 in GB)",
+          "placeholder": "35"
+        },
+        "encrypted": {
+          "label": "Encrypted",
+          "help": "A custom AWS KMS key is used for encryption.",
+          "encryptionLink": {
+            "title": "EBS encryption",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EbsSettings-Encrypted"
+          },
+          "kmsId": "KMS ID"
+        },
+        "snapshotId": {
+          "label": "Snapshot ID",
+          "placeholder": "snap-id",
+          "help": "Enter the Amazon EBS snapshot ID if you're using a snapshot as the source for the volume.",
+          "snapshotLink": {
+            "title": "SnapshotID",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EbsSettings-SnapshotId"
+          }
+        },
+        "validation": {
+          "volumeSize": "You must specify a valid volume size."
+        }
+      },
+      "instance": {
+        "mountPoint": {
+          "label": "Mount path",
+          "placeholder": "/shared",
+          "help": "Configure the mount path for the shared storage on both the head node and compute nodes."
+        },
+        "sourceName": {
+          "label": "Shared source name",
+          "placeholder": "StorageName",
+          "maxLengthError": "Name can be at most {{maxChars}} characters",
+          "forbiddenCharsError": "The name contains one or more forbidden characters",
+          "forbiddenKeywordError": "The name contains a forbidden keyword",
+          "emptyError": "The name is required"
+        },
+        "useExisting": {
+          "label": "External file system",
+          "empty": "No options",
+          "error": "You must specify an external file system ID.",
+          "help": "Specify an external file system and mount it to all instances in the cluster.",
+          "placeholder": "i.e. fsx-1234 or efs-1234",
+          "fsxLink": {
+            "title": "FSx file system ID",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-FsxLustreSettings-FileSystemId"
+          },
+          "efsLink": {
+            "title": "EFS file system ID",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EfsSettings-FileSystemId"
+          },
+          "ebsLink": {
+            "title": "EBS Volume ID",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EbsSettings-VolumeId"
+          }
+        },
+        "deletionPolicy": {
+          "label": "Deletion policy",
+          "help": "Configure whether the volume should be retained, deleted, or snapshotted when a cluster is deleted.",
+          "fsxLink": {
+            "title": "FSx DeletionPolicy",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-FsxLustreSettings-DeletionPolicy"
+          },
+          "efsLink": {
+            "title": "EFS DeletionPolicy",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EfsSettings-DeletionPolicy"
+          },
+          "ebsLink": {
+            "title": "EBS DeletionPolicy",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/SharedStorage-v3.html#yaml-SharedStorage-EbsSettings-DeletionPolicy"
+          }
+        }
+      }
+    },
+    "queues": {
+      "title": "Queues",
+      "description": {
+        "default": "Configure up to {{limit}} cluster queues.",
+        "newResourcesLimits": "Configure up to {{limit}} queues, with a total of {{maxCRPerCluster}} compute resources for each cluster."
+      },
+      "container": {
+        "title": "Queue {{index}} - {{queueName}}"
+      },
+      "help": {
+        "main": "<p>Configure your cluster queues for job scheduling.</p><p>Add and remove queues and queue compute resources.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>",
+        "schedulerLink": {
+          "title": "Queue scheduler properties",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/Scheduling-v3.html?icmpid=docs_parallelcluster_hp_queues_v1"
+        },
+        "customActionsLink": {
+          "title": "Custom actions",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/custom-bootstrap-actions-v3.html?icmpid=docs_parallelcluster_hp_headnode_v1"
+        },
+        "amiLink": {
+          "title": "AWS ParallelCluster AMI customization",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/custom-ami-v3.html?icmpid=docs_parallelcluster_hp_cluster_v1"
+        }
+      },
+      "validation": {
+        "emptyName": "Queue name cannot be null",
+        "maxLengthName": "Name can be at most {{maxChars}} characters",
+        "forbiddenCharsName": "Name must start with a lowercase letter and can only contain lowercase letters, numbers and hyphens",
+        "instanceTypeUnique": "Instance types must be unique within a queue.",
+        "instanceTypeMissing": "Select at least one instance type.",
+        "selectSubnet": "You must select a subnet.",
+        "selectSubnets": "You must select at least one subnet.",
+        "setRootVolumeSize": "You must set a root volume size.",
+        "rootVolumeMinimum": "You must use an integer >= 35GB for root volume size.",
+        "scriptWithArgs": "You must specify a script path if you specify args.",
+        "customAmiSelect": "You must select an AMI ID if you use a custom AMI."
+      },
+      "slurmMemorySettings": {
+        "container": {
+          "title": "Slurm settings",
+          "help": "<p>Use Slurm memory-based scheduling to specify the amount of memory per node required by a job with Slurm's <code>--mem</code> parameter.</p><p>Choose a queue update strategy.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.</p>",
+          "memorySchedulingLink": {
+            "title": "How Slurm memory-based scheduling works with AWS ParallelCluster",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/slurm-mem-based-scheduling-v3.html?icmpid=docs_parallelcluster_hp_queues_slurm_memory_v1"
+          },
+          "schedulingPropertiesLink": {
+            "title": "Slurm memory-based scheduling setting",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/Scheduling-v3.html#yaml-Scheduling-SlurmSettings-EnableMemoryBasedScheduling"
+          },
+          "queueUpdateStrategyLink": {
+            "title": "Queue update strategy setting",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/Scheduling-v3.html#yaml-Scheduling-SlurmSettings-QueueUpdateStrategy"
+          }
+        },
+        "toggle": {
+          "label": "Use Slurm memory based scheduling"
+        },
+        "info": {
+          "header": "You can use Slurm memory based scheduling only when you select one instance type",
+          "body": "If you select more than one instance type in any queue, Slurm memory-based scheduling isn't available by default."
+        }
+      },
+      "allocationStrategy": {
+        "title": "Allocation strategy",
+        "lowestPrice": "Lowest price",
+        "capacityOptimized": "Capacity optimized",
+        "helpPanel": {
+          "title": "Allocation strategy",
+          "description": "Choose the strategy for allocating instances to compute resources.",
+          "link": {
+            "title": "AllocationStrategy setting",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/Scheduling-v3.html#yaml-Scheduling-SlurmQueues-AllocationStrategy"
+          }
+        }
+      },
+      "schedulableMemory": {
+        "name": "Schedulable memory (in MiB)",
+        "description": "The amount of memory (in MiB) made available to jobs on the compute nodes of the compute resource",
+        "placeholder": "Leave blank for default",
+        "help": "The default value is 95 percent of the memory advertised by EC2."
+      },
+      "computeResource": {
+        "header": {
+          "title": "Compute resources",
+          "description": "Configure up to {{limit}} compute resources."
+        },
+        "name": "Resource {{index}} - {{crName}}",
+        "removeComputeResourceButton": {
+          "label": "Remove resource"
+        },
+        "addComputeResource": "Add resource",
+        "staticNodes": "Static nodes",
+        "dynamicNodes": "Dynamic nodes",
+        "instanceType": {
+          "label": "Instance type",
+          "placeholder": {
+            "multiple": "Select one or more instance types"
+          }
+        },
+        "disableHT": {
+          "label": "Turn off multithreading",
+          "helpPanel": {
+            "title": "$t(wizard.queues.computeResource.disableHT.label)",
+            "description": "Prevent multiple threads from running on an EC2 instance core."
+          }
+        },
+        "enableEfa": "Use EFA"
+      },
+      "advancedOptions": {
+        "label": "Advanced options",
+        "iamPolicies": {
+          "label": "IAM Policies"
+        },
+        "scripts": {
+          "title": "Scripts"
+        },
+        "rootVolume": {
+          "title": "Root volume"
+        }
+      },
+      "addQueueButton": {
+        "label": "Add queue"
+      },
+      "removeQueueButton": {
+        "label": "Remove queue"
+      },
+      "placementGroup": {
+        "label": "Use placement group"
+      },
+      "name": {
+        "label": "Queue name",
+        "placeholder": "Enter the queue name"
+      },
+      "subnet": {
+        "label": {
+          "single": "Subnet ID",
+          "multiple": "Subnet IDs"
+        },
+        "placeholder": "Select a subnet"
+      },
+      "purchaseType": {
+        "label": "Purchase type",
+        "helpPanel": {
+          "title": "Purchase type",
+          "description": "Choose the instance purchasing type for compute resources.",
+          "link": {
+            "title": "CapacityType setting",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/Scheduling-v3.html#yaml-Scheduling-SlurmQueues-CapacityType"
+          }
+        }
+      },
+      "securityGroups": {
+        "label": "Additional security groups"
+      }
+    },
+    "create": {
+      "title": "Create",
+      "description": "Review or edit your cluster configuration and create your cluster.",
+      "pending": "<strong>{{clusterName}}</strong> create is in progress. In <strong>Clusters</strong>, view <strong>{{clusterName}}</strong> create status.",
+      "configuration": {
+        "title": "Cluster configuration YAML file",
+        "description": "Review or edit the YAML file that is used to create your cluster.",
+        "forceUpdate": "Force update: Edit the cluster while the compute fleet is still running."
+      },
+      "flashBar": {
+        "success": "Success",
+        "error": "Error"
+      },
+      "helpPanel": {
+        "title": "Cluster configuration",
+        "description": "<p>Review, edit and test cluster configuration.</p><p>Choose <strong>Dry run</strong> to validate your configuration without creating your cluster.</p><p>Choose <strong>Create</strong> to validate your configuration and create your cluster in one step.</p>",
+        "link": {
+          "title": "Configuration properties",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/cluster-configuration-file-v3.html?icmpid=docs_parallelcluster_hp_config_create_v1"
+        }
+      }
+    },
+    "update": {
+      "title": "Edit",
+      "pending": "<strong>{{clusterName}}</strong> update is in progress. In <strong>Clusters</strong>, view <strong>{{clusterName}}</strong> update status.",
+      "helpPanel": {
+        "title": "Cluster configuration",
+        "description": "<p>Review, edit and test cluster configuration.</p><p>Choose <strong>Dry run</strong> to validate your configuration without editing your cluster.</p><p>Choose <strong>Edit cluster</strong> to validate your configuration and edit your cluster in one step.</p>",
+        "link": {
+          "title": "Configuration properties",
+          "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/cluster-configuration-file-v3.html?icmpid=docs_parallelcluster_hp_config_create_v1"
+        }
+      }
+    },
+    "dryRun": {
+      "pending": "<strong>{{clusterName}}</strong> dry-run is in progress."
+    },
+    "components": {
+      "instanceSelect": {
+        "placeholder": "Choose an instance type",
+        "ariaLabel": "Instance selector",
+        "noMatches": "No matches",
+        "instanceType": {
+          "vCpus": "{{vCpus}} vCpus",
+          "memory": "{{memory}} GiB memory"
+        }
+      },
+      "customAmi": {
+        "ariaLabel": "Use a custom Amazon Machine Image (AMI)",
+        "label": "Use a custom Amazon Machine Image (AMI)",
+        "helpPanel": {
+          "title": "Custom Amazon Machine Image (AMI)",
+          "description": "Use a custom Amazon Machine Image (AMI) to customize your cluster.",
+          "imageLink": {
+            "title": "Image section",
+            "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/pcluster.build-image-v3.html"
+          }
+        },
+        "suggestLabel": "Custom AMI ID"
+      },
+      "rootVolume": {
+        "size": {
+          "label": "Root volume size (GB)",
+          "placeholder": "Enter root volume size."
+        },
+        "encrypted": "Encrypt root volume",
+        "type": {
+          "label": "Volume type",
+          "placeholder": "Default ({{defaultRootVolumeType}})"
+        }
+      },
+      "IamPoliciesEditor": {
+        "policyAlreadyAdded": "Policy already added.",
+        "addButtonLabel": "Add"
+      },
+      "actionsEditor": {
+        "onStart": {
+          "label": "Run script on node start"
+        },
+        "onConfigured": {
+          "label": "Run script on node configured"
+        },
+        "addArgument": "Add argument",
+        "argument": {
+          "label": "Arguments",
+          "placeholder": "Argument"
+        }
+      }
+    }
+  },
+  "users": {
+    "header": {
+      "title": "Users",
+      "description": "The list of users that have permission to access the AWS ParallelCluster UI."
+    },
+    "actions": {
+      "add": "Add user",
+      "refresh": "Refresh",
+      "remove": "Remove",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "helpPanel": {
+      "title": "Users",
+      "description": "Maintain the list of cognito users with credentials that only permit access to the $t(global.projectName).<p>Enter a user email address and choose <strong>Add user</strong></p><p>Choose <strong>Remove</strong> to remove a user.</p><p>Choose <strong>Refresh</strong> to view changes to the list of users.</p>"
+    },
+    "errors": {
+      "invalidEmail": "You must enter a valid email"
+    },
+    "list": {
+      "columns": {
+        "email": "Email",
+        "created": "Created"
+      },
+      "dialogs": {
+        "delete": {
+          "title": "Delete user",
+          "body": "Are you sure you want to delete user {{userEmail}}?"
+        }
+      },
+      "createModal": {
+        "emailLabel": "Email",
+        "emailPlaceholder": "email@domain.com"
+      },
+      "filtering": {
+        "loadingText": "Loading users...",
+        "countText": "Results: {{filteredItemsCount}}",
+        "filteringAriaLabel": "Find users",
+        "filteringPlaceholder": "Find users",
+        "empty": {
+          "title": "No users",
+          "subtitle": "No users to display."
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No users match the filters.",
+          "action": "Clear filter"
+        }
+      }
+    }
+  },
+  "images": {
+    "tabs": {
+      "officialImages": "Official",
+      "customImages": "Custom"
+    }
+  },
+  "customImages": {
+    "header": {
+      "title": "Custom images",
+      "description": "The list of custom images that you created. Custom images are customized AMIs that are used to build a <0>customized AWS ParallelCluster</0>."
+    },
+    "actions": {
+      "build": "Build image",
+      "refresh": "Refresh",
+      "statusSelect": {
+        "available": "Available",
+        "pending": "Pending",
+        "failed": "Failed",
+        "selectedAriaLabel": "Selected"
+      }
+    },
+    "helpPanel": {
+      "title": "Custom images",
+      "description": "Choose <strong>Build image</strong> to create your custom image.<p>You can only build images with the same AWS ParallelCluster version that was used to create the $t(global.projectName).</p><p>If you choose <strong>Build image</strong>, you proceed to create a custom image by uploading a configuration, by entering the ID of an existing image, or by manually entering the configuration.</p><p>After you have provided the configuration, you choose <strong>Build image</strong>.</p><p>Choose <strong>Refresh</strong> to view recently changed or added AWS resources.",
+      "amiCustomizationlink": {
+        "title": "AWS ParallelCluster AMI customization",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/custom-ami-v3.html?icmpid=docs_parallelcluster_hp_custom_images_v1"
+      },
+      "buildImagePropertieslink": {
+        "title": "Build image configuration properties",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/image-builder-configuration-file-v3.html?icmpid=docs_parallelcluster_hp_custom_images_v1"
+      }
+    },
+    "list": {
+      "columns": {
+        "name": "Name",
+        "amiId": "AMI ID",
+        "status": "Status",
+        "region": "Region",
+        "version": "Version"
+      },
+      "filtering": {
+        "loadingText": "Loading images...",
+        "countText": "Results: {{filteredItemsCount}}",
+        "filteringAriaLabel": "Find custom images",
+        "filteringPlaceholder": "Find custom images",
+        "empty": {
+          "title": "No images to display",
+          "subtitle": "Click on Build image to create an image.",
+          "action": "Build image"
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No images match the filters.",
+          "action": "Clear filter"
+        }
+      }
+    },
+    "splitPanel": {
+      "imageSelectedText": "Image: {{imageId}}",
+      "noImageSelectedText": "No image selected",
+      "selectImageText": "Select an image to see its details"
+    },
+    "imageDetails": {
+      "tabs": {
+        "properties": "Properties",
+        "tags": "Tags",
+        "configuration": "Configuration",
+        "stackEvents": "Stack events"
+      },
+      "tags": {
+        "key": "Key",
+        "value": "Value",
+        "filtering": {
+          "loadingText": "Loading tags...",
+          "countText": "Results: {{filteredItemsCount}}",
+          "filteringAriaLabel": "Find tags",
+          "filteringPlaceholder": "Find tags",
+          "empty": {
+            "title": "No tags to display",
+            "subtitle": "Use the Tags property of the image configuration to add tags to the image."
+          },
+          "noMatch": {
+            "title": "No matches",
+            "subtitle": "No tags match the filters.",
+            "action": "Clear filter"
+          }
+        }
+      },
+      "properties": {
+        "header": {
+          "title": "Properties"
+        },
+        "creationTime": "Created time",
+        "architecture": "Architecture",
+        "state": "State",
+        "configurationUrl": {
+          "label": "Configuration URL",
+          "copyText": "Copy",
+          "tooltiptext": "Image configuration URL copied to clipboard."
+        },
+        "buildStatus": "Build status",
+        "amiId": {
+          "label": "AMI ID",
+          "copyText": "Copy",
+          "tooltiptext": "AMI ID copied to clipboard."
+        },
+        "imageId": "Image ID",
+        "region": "Region",
+        "version": "Version"
+      },
+      "stackEvents": {
+        "status": "Status {{status}}",
+        "reason": "Reason: {{reason}}"
+      }
+    },
+    "dialogs": {
+      "buildImage": {
+        "closeAriaLabel": "Close",
+        "title": "Image configuration",
+        "cancel": "Cancel",
+        "build": "Build image",
+        "imageIdLabel":"Image ID",
+        "imageIdPlaceholder":"Enter image AMI ID",
+        "imageIdError":"Image ID must not be blank"
+      }
+    }
+  },
+  "officialImages": {
+    "header": {
+      "title": "Official images",
+      "description": "The official list of tested Amazon Machine Images (AMIs) that are automatically used to create AWS ParallelClusters."
+    },
+    "helpPanel": {
+      "title": "Official images",
+      "description": "<p>Refer to this list of AMI images when configuring your cluster.</p><p>This version-coupled instance of the $t(global.projectName) automatically uses these tested AMIs to create clusters based on the operating system and architecture that you choose.</p>",
+      "link": {
+        "title": "AWS ParallelCluster support policy",
+        "href": "https://docs.aws.amazon.com/parallelcluster/latest/ug/support-policy.html"
+      }
+    },
+    "list": {
+      "columns": {
+        "id": "ID",
+        "os": "Operating system",
+        "architecture": "Architecture",
+        "version": "Version"
+      },
+      "filtering": {
+        "loadingText": "Loading images...",
+        "countText": "Results: {{filteredItemsCount}}",
+        "filteringAriaLabel": "Find official images",
+        "filteringPlaceholder": "Find official images",
+        "empty": {
+          "title": "No images",
+          "subtitle": "No images to display."
+        },
+        "noMatch": {
+          "title": "No matches",
+          "subtitle": "No images match the filters.",
+          "action": "Clear filter"
+        }
+      }
+    }
+  },
+  "components": {
+    "ClusterFailedHelp": {
+      "errorMessage": "Stack failed to create, see <0>CloudFormation stack events</0> or <1>Cluster logs</1> to see why."
+    },
+    "Loading": {
+      "text": "Loading..."
+    },
+    "FileUploadButton": {
+      "label": "Choose file"
+    }
+  }
+}
