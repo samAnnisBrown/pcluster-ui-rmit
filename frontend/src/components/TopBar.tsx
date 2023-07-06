@@ -148,7 +148,7 @@ export default function Topbar() {
           title: t('global.projectDisplayName'),
           href: '/',
           logo: {
-            src: '/img/pcluster.svg',
+            src: '/img/race.png',
             alt: t('global.topBar.logoAltText'),
           },
         }}

@@ -290,7 +290,7 @@
         "delete": "Delete cluster",
         "shell": "Shell",
         "filesystem": "View file system",
-        "dcv": "DCV",
+        "dcv": "Connect",
         "logs": "View logs"
       },
       "actionsLabel": "Actions",

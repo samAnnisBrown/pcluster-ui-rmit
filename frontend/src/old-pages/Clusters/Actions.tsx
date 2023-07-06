@@ -136,7 +136,7 @@ export default function Actions() {
     (instance: any) => {
       let callback = (dcvInfo: any) => {
         window.open(
-          `https://${instance.publicIpAddress}:${dcvInfo.port}?authToken=${dcvInfo.session_token}#${dcvInfo.session_id}`,
+          `https://${dcvInfo.public_dns}:${dcvInfo.port}?authToken=${dcvInfo.session_token}#${dcvInfo.session_id}`,
         )
       }
       let user = clusterDefaultUser(cluster)
@@ -218,13 +218,14 @@ export default function Actions() {
       </DeleteDialog>
       <StopDialog clusterName={clusterName} />
       <SpaceBetween direction="horizontal" size="xs">
-        <Button
+        {/* ansamual@ - 2023-07-06 - remove Shell button */}
+        {/* <Button
           disabled={isSsmDisabled}
           onClick={onShellClick}
           iconName="external"
         >
           {t('cluster.list.actions.shell')}
-        </Button>
+        </Button> */}
         <Button
           disabled={isDcvDisabled}
           onClick={onDcvClick}

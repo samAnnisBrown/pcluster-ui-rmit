@@ -37,7 +37,9 @@ const versionToFeaturesMap: Record<string, AvailableFeature[]> = {
 const featureToUnsupportedRegionsMap: Partial<
   Record<AvailableFeature, string[]>
 > = {
-  cost_monitoring: ['us-gov-west-1'],
+  // ansamual@ - 2023-07-06 - included Sydney and Ohio to unsupported region map
+  // Ensures cost monitoring is disabled in these regions until Linked Account issue is resolved
+  cost_monitoring: ['us-gov-west-1', 'ap-southeast-2', 'us-east-2'],
 }
 
 function isSupportedInRegion(

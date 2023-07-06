@@ -174,7 +174,8 @@ export default function Users() {
                 <Button onClick={refreshUsers}>
                   {t('users.actions.refresh')}
                 </Button>
-                <Button
+                {/* ansamual@ - 2023-07-06 - remove Add and Remove button from users panel */}
+                {/* <Button
                   disabled={isDeleteUserButtonDisabled()}
                   onClick={() => {
                     setState(['app', 'user', 'delete'], selectedUsers[0])
@@ -182,13 +183,13 @@ export default function Users() {
                   }}
                 >
                   {t('users.actions.remove')}
-                </Button>
-                <Button
+                </Button> */}
+                {/* <Button
                   variant="primary"
                   onClick={() => setAddUserModalVisible(true)}
                 >
                   {t('users.actions.add')}
-                </Button>
+                </Button> */}
               </SpaceBetween>
             }
           >

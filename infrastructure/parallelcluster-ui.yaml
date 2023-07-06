@@ -707,6 +707,8 @@ Resources:
             - ec2:DescribeInstanceTypes
             - ec2:DescribeSubnets
             - ec2:DescribeKeyPairs
+            # ansamual@ - 2023-07-06 - permission required to retrieve public DNS
+            - ec2:DescribeInstances
             Resource:
               - '*'
             Effect: Allow

@@ -451,6 +451,18 @@ def get_dcv_session():
         "session_id": dcv_parameters.group(2),
         "session_token": dcv_parameters.group(3),
     }
+
+    # ansamual@ - 2023-07-06 - add logic to retrieve Public DNS and add to dcvInfo dict
+    if request.args.get("region"):
+        config = botocore.config.Config(region_name=request.args.get("region"))
+        ec2 = boto3.client("ec2", config=config)
+    else:
+        ec2 = boto3.client("ec2")
+    
+    pub_dns_response = ec2.describe_instances(InstanceIds=[instance_id])
+    public_dns = pub_dns_response['Reservations'][0]['Instances'][0]['PublicDnsName']
+    ret['public_dns'] = public_dns
+
     return ret
 
 
