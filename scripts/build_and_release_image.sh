@@ -8,14 +8,17 @@ print_usage() {
 }
 
 # ansamual@ - 2023-07-06 - modify these settings to point to your own public ECR repo
-ECR_REPO="pcluster-ui-rmit"
-ECR_REGION="us-east-1"
-
 # Private endpoint - uncomment if pushing to private
-#ECR_ENDPOINT="775780210965.dkr.ecr.us-east-2.amazonaws.com"
+# ECR_REPO="pcluster-ui-rmit"
+# ECR_REGION="us-east-2"
+# ECR_ENDPOINT="775780210965.dkr.ecr.us-east-2.amazonaws.com"
+# ECR_COMMAND="ecr"
 
 # Public endpoint example - uncomment if pushing to public
+ECR_REPO="pcluster-ui-rmit"
+ECR_REGION="us-east-1"
 ECR_ENDPOINT="public.ecr.aws/f9w8i0a8"
+ECR_COMMAND="ecr-public"
 
 while [[ $# -gt 0 ]]
 do
@@ -57,12 +60,7 @@ elif ! [[ $TAG =~ [0-9]{4}\.(0[1-9]|1[0-2])\.[0-9]+ ]]; then
   exit 1
 fi
 
-# Use for private repos - use with private ECR_ENDPOINT above
-#aws ecr get-login-password --region "$ECR_REGION" | docker login --username AWS --password-stdin "${ECR_ENDPOINT}"
-
-# Use for public repos - use with public ECR_ENDPOINT above
-aws ecr-public get-login-password --region "$ECR_REGION" | docker login --username AWS --password-stdin "${ECR_ENDPOINT}"
-
+aws $ECR_COMMAND get-login-password --region "$ECR_REGION" | docker login --username AWS --password-stdin "${ECR_ENDPOINT}"
 
 pushd frontend
 # if [ ! -d node_modules ]; then

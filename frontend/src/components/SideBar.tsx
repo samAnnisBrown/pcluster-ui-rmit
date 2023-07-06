@@ -36,7 +36,8 @@ export default function SideBar() {
       return [
         {type: 'link', text: t('global.menu.clusters'), href: '/clusters'},
         {type: 'link', text: t('global.menu.images'), href: '/images'},
-        {type: 'link', text: t('global.menu.users'), href: '/users'},
+        // ansamual@ - 2023-07-06 - Let's just fully hide the Users menu
+        // {type: 'link', text: t('global.menu.users'), href: '/users'},
         {type: 'divider'},
         {
           type: 'link',
